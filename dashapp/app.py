@@ -1,7 +1,9 @@
 from dash import Dash
+import dash_bootstrap_components as dbc
+
 
 # สร้างอินสแตนซ์ของแอป
-app = Dash(__name__)
+app = Dash(__name__, external_stylesheets=[dbc.themes.DARKLY])
 
 # สามารถตั้งค่าบางอย่างเพิ่มเติมได้ที่นี่
 app.config.suppress_callback_exceptions = True
