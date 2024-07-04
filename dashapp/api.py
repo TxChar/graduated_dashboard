@@ -13,5 +13,5 @@ def graduated_api():
     # except:
     #     df = pandas.DataFrame()
 
-    df = pandas.read_json("/dashapp/graduated.json")
+    df = pandas.read_json("dashapp/graduated.json")
     return df
