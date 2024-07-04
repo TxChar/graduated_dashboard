@@ -1,4 +1,5 @@
 from dash import html, dcc
+import dash_bootstrap_components as dbc
 from api import graduated_api
 import pandas as pd
 
@@ -14,8 +15,29 @@ dropdown_options = [
 # กำหนดเลย์เอาท์ของแอป
 layout = html.Div(
     children=[
-        html.H1(children="จำนวนนักเรียนที่สำเร็จการศึกษาประจำปี 2566"),
-        dcc.Dropdown(id="provinces-dropdown", options=dropdown_options),  # ค่าเริ่มต้น
-        html.Div(id="output-table"),
+        html.Br(),
+        html.H3(
+            children="จำนวนนักเรียนมัธยมศึกษาปีที่ 6 ที่สำเร็จการศึกษาประจำปี 2566",
+            style={"textAlign": "center"},
+        ),
+        dbc.Container(
+            [
+                dcc.Dropdown(
+                    id="provinces-dropdown",
+                    options=dropdown_options,
+                    placeholder="กรุณาเลือกจังหวัด",
+                    multi=True,
+                    style={
+                        "color": "black",
+                    },
+                ),
+            ]
+        ),
+        html.Br(),
+        dbc.Container(
+            [
+                html.Div(id="output-table"),
+            ]
+        ),
     ]
 )
