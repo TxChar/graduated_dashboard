@@ -7,7 +7,7 @@ from pages import homepage, layout
 app = Dash(
     __name__,
     suppress_callback_exceptions=True,
-    external_stylesheets=[dbc.themes.DARKLY],
+    external_stylesheets=[dbc.themes.LUMEN, dbc.icons.FONT_AWESOME],
 )
 app.title = "GRADUATED STUDENTS DASH"
 
