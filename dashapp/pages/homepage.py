@@ -18,40 +18,69 @@ layout = html.Div(
     children=[
         Navbar(),
         html.Br(),
+        # Dropdown Provinces
         dbc.Container(
-            [
-                html.Hr(),
-                dbc.Col(
-                    [html.H4("ตาราง", style={"color": "white", "marginLeft": "20px"})]
-                ),
-                html.Hr(),
-                dbc.Container(
-                    [
-                        dbc.Container(
-                            [
-                                dcc.Dropdown(
-                                    id="provinces-dropdown",
-                                    options=dropdown_options,
-                                    placeholder="กรุณาเลือกจังหวัด",
-                                    multi=True,
-                                    style={
-                                        "color": "black",
-                                    },
-                                ),
-                            ]
-                        ),
-                        html.Br(),
-                        dbc.Container(
-                            [
-                                html.Div(id="output-table"),
-                            ]
-                        ),
-                        html.Br(),
-                    ],
-                    style={"marginTop": 20, "Align": "center"},
-                ),
-            ],
-            style={"backgroundColor": "#024070", "border-radius": "20px"},
+            dbc.Container(
+                [
+                    html.Hr(),
+                    dbc.Col(
+                        [
+                            html.H4(
+                                "จังหวัด",
+                                style={"color": "white", "marginLeft": "20px"},
+                            )
+                        ]
+                    ),
+                    dbc.Container(
+                        [
+                            dbc.Container(
+                                [
+                                    dcc.Dropdown(
+                                        id="provinces-dropdown",
+                                        options=dropdown_options,
+                                        placeholder="กรุณาเลือกจังหวัด",
+                                        multi=True,
+                                        style={
+                                            "color": "black",
+                                        },
+                                    ),
+                                ]
+                            ),
+                            html.Br(),
+                        ],
+                        style={"marginTop": 20, "Align": "center"},
+                    ),
+                ],
+                style={"backgroundColor": "#024070", "border-radius": "20px"},
+            ),
+        ),
+        # Table
+        dbc.Container(
+            dbc.Container(
+                [
+                    html.Hr(),
+                    dbc.Col(
+                        [
+                            html.H4(
+                                "ตาราง", style={"color": "white", "marginLeft": "20px"}
+                            )
+                        ]
+                    ),
+                    html.Hr(),
+                    dbc.Container(
+                        [
+                            dbc.Container(
+                                [
+                                    html.Div(id="output-table"),
+                                ]
+                            ),
+                            html.Br(),
+                        ],
+                        style={"marginTop": 20, "Align": "center"},
+                    ),
+                ],
+                style={"backgroundColor": "#024070", "border-radius": "20px"},
+            ),
         ),
         Footer(),
     ]

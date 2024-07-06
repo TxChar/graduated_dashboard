@@ -4,7 +4,8 @@ from dash import callback, html, Input, Output, dash_table, dcc
 footer_style = {
     "marginTop": "20px",
     "padding": "5px",
-    "backgroundColor": "#303030",
+    "backgroundColor": "#024070",
+    "bottom": "0px",
 }
 
 

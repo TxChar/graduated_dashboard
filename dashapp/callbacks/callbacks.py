@@ -29,12 +29,13 @@ def table_slection(app):
             style_header={
                 "color": "black",
                 "fontWeight": "bold",
+                "backgroundColor": "rgb(200, 200, 200)",
             },
             style_cell={"padding-right": "10px", "fontSize": 18},
             style_data={"color": "black", "backgroundColor": "white"},
             style_data_conditional=[
                 {
-                    "if": {"row_index": "even"},
+                    "if": {"row_index": "odd"},
                     "backgroundColor": "rgb(220, 220, 220)",
                 }
             ],
