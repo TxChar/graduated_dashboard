@@ -54,7 +54,7 @@ def Navbar():
                 brand="แดชบอร์ด นักเรียนมัธยมศึกษาปีที่6 ที่สำเร็จการศึกษาประจำปี2566",
                 brand_style={"fontSize": 20},
                 brand_href="/",
-                color="dark",
+                color="#024070",
                 dark=True,
             ),
         ]

@@ -21,7 +21,9 @@ layout = html.Div(
         dbc.Container(
             [
                 html.Hr(),
-                dbc.Col([html.H4("ตาราง")]),
+                dbc.Col(
+                    [html.H4("ตาราง", style={"color": "white", "marginLeft": "20px"})]
+                ),
                 html.Hr(),
                 dbc.Container(
                     [
@@ -44,11 +46,12 @@ layout = html.Div(
                                 html.Div(id="output-table"),
                             ]
                         ),
+                        html.Br(),
                     ],
                     style={"marginTop": 20, "Align": "center"},
                 ),
             ],
-            style={"backgroundColor": "#161A1D"},
+            style={"backgroundColor": "#024070", "border-radius": "20px"},
         ),
         Footer(),
     ]
