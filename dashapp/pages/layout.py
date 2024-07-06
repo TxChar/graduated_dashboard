@@ -1,6 +1,7 @@
 import dash_bootstrap_components as dbc
 from callbacks.api import graduated_api
 from components.navbar import Navbar
+from components.footer import Footer
 from dash import dcc, html
 
 # เตรียมข้อมูล
@@ -17,28 +18,38 @@ layout = html.Div(
     children=[
         Navbar(),
         html.Br(),
-        html.H3(
-            children="ตาราง",
-            style={"textAlign": "center"},
-        ),
         dbc.Container(
             [
-                dcc.Dropdown(
-                    id="provinces-dropdown",
-                    options=dropdown_options,
-                    placeholder="กรุณาเลือกจังหวัด",
-                    multi=True,
-                    style={
-                        "color": "black",
-                    },
+                html.Hr(),
+                dbc.Col([html.H4("ตาราง")]),
+                html.Hr(),
+                dbc.Container(
+                    [
+                        dbc.Container(
+                            [
+                                dcc.Dropdown(
+                                    id="provinces-dropdown",
+                                    options=dropdown_options,
+                                    placeholder="กรุณาเลือกจังหวัด",
+                                    multi=True,
+                                    style={
+                                        "color": "black",
+                                    },
+                                ),
+                            ]
+                        ),
+                        html.Br(),
+                        dbc.Container(
+                            [
+                                html.Div(id="output-table"),
+                            ]
+                        ),
+                    ],
+                    style={"marginTop": 20, "Align": "center"},
                 ),
-            ]
+            ],
+            style={"backgroundColor": "#161A1D"},
         ),
-        html.Br(),
-        dbc.Container(
-            [
-                html.Div(id="output-table"),
-            ]
-        ),
+        Footer(),
     ]
 )
