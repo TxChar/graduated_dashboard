@@ -85,9 +85,9 @@ def map_selection(app):
             zoom=5,
             height=750,
         )
-        fig.update_layout(mapbox_style="open-street-map")
-        fig.update_layout(margin={"r": 0, "t": 0, "l": 0, "b": 0})
-        fig.update_layout(paper_bgcolor="#024070", plot_bgcolor="#024070")
+        fig.update_layout(
+            margin={"r": 0, "t": 0, "l": 0, "b": 0}, mapbox_style="open-street-map"
+        )
 
         fig = dcc.Graph(figure=fig)
         return fig

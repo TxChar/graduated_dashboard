@@ -32,6 +32,6 @@ def graduated_api():
 
 def provinces_location():
     df_graduated = (graduated_api()).drop(["pp3year", "level"], axis=1)
-    df_locations = pandas.read_csv("dashapp/ThailandProvincesLocation.csv")
+    df_locations = pandas.read_csv("dashapp/assets/ThailandProvincesLocation.csv")
     df_merge_locations = pandas.merge(df_graduated, df_locations, on="schools_province")
     return df_merge_locations
