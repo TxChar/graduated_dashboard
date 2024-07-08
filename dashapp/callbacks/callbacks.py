@@ -117,16 +117,15 @@ def summarization_students(app):
                 "totalstd": "จำนวนทั้งหมด",
             }
         )
+        male_total = graduated_df["จำนวนผู้ชาย"].sum()
+        female_total = graduated_df["จำนวนผู้หญิง"].sum()
+        summary_total = graduated_df["จำนวนทั้งหมด"].sum()
 
         male_card = [
             dbc.CardHeader("จำนวนผู้ชาย"),
             dbc.CardBody(
                 [
-                    html.H5("Card title", className="card-title"),
-                    html.P(
-                        "This is some card content that we'll reuse",
-                        className="card-text",
-                    ),
+                    html.H3(f"{male_total} คน", className="card-title"),
                 ]
             ),
         ]
@@ -135,11 +134,7 @@ def summarization_students(app):
             dbc.CardHeader("จำนวนผู้หญิง"),
             dbc.CardBody(
                 [
-                    html.H5("Card title", className="card-title"),
-                    html.P(
-                        "This is some card content that we'll reuse",
-                        className="card-text",
-                    ),
+                    html.H3(f"{female_total} คน", className="card-title"),
                 ]
             ),
         ]
@@ -148,11 +143,7 @@ def summarization_students(app):
             dbc.CardHeader("จำนวนทั้งหมด"),
             dbc.CardBody(
                 [
-                    html.H5("Card title", className="card-title"),
-                    html.P(
-                        "This is some card content that we'll reuse",
-                        className="card-text",
-                    ),
+                    html.H3(f"{summary_total} คน", className="card-title"),
                 ]
             ),
         ]
@@ -163,3 +154,4 @@ def summarization_students(app):
 def register_callbacks(app):
     table_slection(app)
     map_selection(app)
+    summarization_students(app)

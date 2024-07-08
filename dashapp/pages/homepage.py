@@ -79,21 +79,21 @@ layout = html.Div(
                                         [
                                             dbc.Col(
                                                 dbc.Card(
-                                                    card_content,
+                                                    id="male-card",
                                                     color="primary",
                                                     inverse=True,
                                                 )
                                             ),
                                             dbc.Col(
                                                 dbc.Card(
-                                                    card_content,
+                                                    id="female-card",
                                                     color="#FF4162",
                                                     inverse=True,
                                                 )
                                             ),
                                             dbc.Col(
                                                 dbc.Card(
-                                                    card_content,
+                                                    id="summary-card",
                                                     color="green",
                                                     inverse=True,
                                                 )
