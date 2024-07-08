@@ -2,7 +2,7 @@ import dash_bootstrap_components as dbc
 from callbacks.callbacks import register_callbacks
 from dash import Dash, dcc, html
 from dash.dependencies import Input, Output
-from pages import homepage, about
+from pages import home, about
 
 app = Dash(
     __name__,
@@ -24,7 +24,7 @@ def display_page(pathname):
     if pathname == "/about":
         return about.layout
     else:
-        return homepage.layout
+        return home.layout
 
 
 if __name__ == "__main__":
