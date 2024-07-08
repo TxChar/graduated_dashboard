@@ -50,7 +50,7 @@ layout = html.Div(
                                     dcc.Dropdown(
                                         id="provinces-dropdown",
                                         options=dropdown_options,
-                                        placeholder="กรุณาเลือกจังหวัด",
+                                        placeholder="ทุกจังหวัด",
                                         multi=True,
                                         style={
                                             "color": "black",
@@ -87,14 +87,14 @@ layout = html.Div(
                                             dbc.Col(
                                                 dbc.Card(
                                                     id="female-card",
-                                                    color="#FF4162",
+                                                    color="danger",
                                                     inverse=True,
                                                 )
                                             ),
                                             dbc.Col(
                                                 dbc.Card(
                                                     id="summary-card",
-                                                    color="green",
+                                                    color="success",
                                                     inverse=True,
                                                 )
                                             ),
