@@ -53,16 +53,36 @@ def map_selection(app):
         df_merge_locations = provinces_location()
         df_merge_locations.columns = df_merge_locations.columns.str.strip()
 
+        if selected_province:
+            df_merge_locations = df_merge_locations[
+                df_merge_locations["schools_province"].isin(selected_province)
+            ]
+
+        df_merge_locations = df_merge_locations.rename(
+            columns={
+                "latitude": "ละติจูด",
+                "longitude": "ลองจิจูด",
+                "level": "ระดับการศึกษา",
+                "schools_province": "จังหวัด",
+                "totalmale": "จำนวนผู้ชาย",
+                "totalfemale": "จำนวนผู้หญิง",
+                "totalstd": "จำนวนทั้งหมด",
+            }
+        )
+
         fig = plotly.express.scatter_mapbox(
             df_merge_locations,
-            lat="latitude",
-            lon="longitude",
-            hover_name="schools_province",
-            hover_data=["totalmale", "totalfemale", "totalstd"],
+            lat="ละติจูด",
+            lon="ลองจิจูด",
+            hover_name="จังหวัด",
+            hover_data=["จำนวนผู้ชาย", "จำนวนผู้หญิง", "จำนวนทั้งหมด"],
             center=dict(lat=13.736717, lon=100.523186),
-            # color_discrete_sequence=["fuchsia"],
+            color="จำนวนทั้งหมด",
+            size="จำนวนทั้งหมด",
+            color_continuous_scale=plotly.express.colors.sequential.Rainbow,
+            size_max=30,
             zoom=5,
-            height=800,
+            height=750,
         )
         fig.update_layout(mapbox_style="open-street-map")
         fig.update_layout(margin={"r": 0, "t": 0, "l": 0, "b": 0})
