@@ -50,41 +50,22 @@ def map_selection(app):
         Output("output-map", "children"), [Input("provinces-dropdown", "value")]
     )
     def update_map(selected_province):
-        # df = (graduated_api()).drop(["pp3year", "level"], axis=1)
         df_merge_locations = provinces_location()
-        df_merge_locations = df_merge_locations.rename(
-            columns={
-                "latitude": "lat",
-                "longitude": "lon",
-            }
-        )
-        # fig = px.scatter_mapbox(
-        #     df_merge_locations,
-        #     lat="lat",
-        #     lon="lon",
-        #     hover_name="City",
-        #     hover_data=["State", "Population"],
-        #     color_discrete_sequence=["fuchsia"],
-        #     zoom=3,
-        #     height=300,
-        # )
-        # fig.update_layout(mapbox_style="open-street-map")
-        # fig.update_layout(margin={"r": 0, "t": 0, "l": 0, "b": 0})
-        fig = plotly.express.density_mapbox(
+        df_merge_locations.columns = df_merge_locations.columns.str.strip()
+
+        fig = plotly.express.scatter_mapbox(
             df_merge_locations,
-            radius=20,
-            # lat=df_merge_locations["lat"],
-            # lon=df_merge_locations["lon"],
-            z="totalstd",
+            lat="latitude",
+            lon="longitude",
+            hover_name="schools_province",
+            hover_data=["totalmale", "totalfemale", "totalstd"],
+            center=dict(lat=13.736717, lon=100.523186),
+            # color_discrete_sequence=["fuchsia"],
             zoom=5,
             height=800,
-            center=dict(lat=13.736717, lon=100.523186),
-            mapbox_style="open-street-map",
-            color_continuous_scale="Jet",
-            range_color=(0, 20000),
         )
-        print(">>>>", df_merge_locations)
-
+        fig.update_layout(mapbox_style="open-street-map")
+        fig.update_layout(margin={"r": 0, "t": 0, "l": 0, "b": 0})
         fig.update_layout(paper_bgcolor="#024070", plot_bgcolor="#024070")
 
         fig = dcc.Graph(figure=fig)
