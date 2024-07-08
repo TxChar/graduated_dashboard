@@ -13,11 +13,23 @@ dropdown_options = [
     for schools_province in df["schools_province"]
 ]
 
+card_content = [
+    dbc.CardHeader("Card header"),
+    dbc.CardBody(
+        [
+            html.H5("Card title", className="card-title"),
+            html.P(
+                "This is some card content that we'll reuse",
+                className="card-text",
+            ),
+        ]
+    ),
+]
+
 # กำหนดเลย์เอาท์ของแอป
 layout = html.Div(
     children=[
         Navbar(),
-        html.Br(),
         # Dropdown Provinces
         dbc.Container(
             dbc.Container(
@@ -43,6 +55,51 @@ layout = html.Div(
                                         style={
                                             "color": "black",
                                         },
+                                    ),
+                                ]
+                            ),
+                            html.Br(),
+                        ],
+                        style={"marginTop": 20, "Align": "center"},
+                    ),
+                ],
+                style={"backgroundColor": "#024070", "border-radius": "20px"},
+            ),
+        ),
+        # Display Card
+        dbc.Container(
+            dbc.Container(
+                [
+                    html.Hr(),
+                    dbc.Container(
+                        [
+                            dbc.Container(
+                                [
+                                    dbc.Row(
+                                        [
+                                            dbc.Col(
+                                                dbc.Card(
+                                                    card_content,
+                                                    color="primary",
+                                                    inverse=True,
+                                                )
+                                            ),
+                                            dbc.Col(
+                                                dbc.Card(
+                                                    card_content,
+                                                    color="#FF4162",
+                                                    inverse=True,
+                                                )
+                                            ),
+                                            dbc.Col(
+                                                dbc.Card(
+                                                    card_content,
+                                                    color="green",
+                                                    inverse=True,
+                                                )
+                                            ),
+                                        ],
+                                        className="mb-4",
                                     ),
                                 ]
                             ),
