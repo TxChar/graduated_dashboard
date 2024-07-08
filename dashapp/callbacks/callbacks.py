@@ -1,6 +1,7 @@
 from callbacks.api import graduated_api, provinces_location
 from dash.dependencies import Input, Output
-from dash import Input, Output, dash_table, dcc
+from dash import Input, Output, dash_table, dcc, html
+import dash_bootstrap_components as dbc
 import plotly
 
 
@@ -90,6 +91,73 @@ def map_selection(app):
 
         fig = dcc.Graph(figure=fig)
         return fig
+
+
+def summarization_students(app):
+    @app.callback(
+        [
+            Output("male-card", "children"),
+            Output("female-card", "children"),
+            Output("summary-card", "children"),
+        ],
+        [Input("provinces-dropdown", "value")],
+    )
+    def update_table(selected_province):
+        df = (graduated_api()).drop(["pp3year", "level"], axis=1)
+
+        if selected_province:
+            df = df[df["schools_province"].isin(selected_province)]
+
+        graduated_df = df.rename(
+            columns={
+                "level": "ระดับการศึกษา",
+                "schools_province": "จังหวัด",
+                "totalmale": "จำนวนผู้ชาย",
+                "totalfemale": "จำนวนผู้หญิง",
+                "totalstd": "จำนวนทั้งหมด",
+            }
+        )
+
+        male_card = [
+            dbc.CardHeader("จำนวนผู้ชาย"),
+            dbc.CardBody(
+                [
+                    html.H5("Card title", className="card-title"),
+                    html.P(
+                        "This is some card content that we'll reuse",
+                        className="card-text",
+                    ),
+                ]
+            ),
+        ]
+
+        female_card = [
+            dbc.CardHeader("จำนวนผู้หญิง"),
+            dbc.CardBody(
+                [
+                    html.H5("Card title", className="card-title"),
+                    html.P(
+                        "This is some card content that we'll reuse",
+                        className="card-text",
+                    ),
+                ]
+            ),
+        ]
+
+        summary_card = [
+            dbc.CardHeader("จำนวนทั้งหมด"),
+            dbc.CardBody(
+                [
+                    html.H5("Card title", className="card-title"),
+                    html.P(
+                        "This is some card content that we'll reuse",
+                        className="card-text",
+                    ),
+                ]
+            ),
+        ]
+
+        return (male_card, female_card, summary_card)
 
 
 def register_callbacks(app):
