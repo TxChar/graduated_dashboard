@@ -30,4 +30,4 @@ def display_page(pathname):
 if __name__ == "__main__":
     server = app.server
     register_callbacks(app)
-    app.run_server(debug=True)
+    app.run_server(debug=False)
