@@ -5,17 +5,28 @@ import plotly.express as px
 
 
 def graduated_api():
-    # client = httpx.Client()
-    # url = "https://gpa.obec.go.th/reportdata/pp3-4_2566_province.json"
+    client = httpx.Client()
+    url = "https://gpa.obec.go.th/reportdata/pp3-4_2566_province.json"
 
-    # try:
-    #     response = client.get(url)
-    #     json_data = response.json()
-    #     df = pandas.DataFrame(json_data)
-    # except:
-    #     df = pandas.DataFrame()
+    try:
+        response = client.get(url)
+        json_data = response.json()
+        df = pandas.DataFrame(json_data)
+    except:
+        df = pandas.DataFrame(
+            columns=[
+                "pp3year",
+                "level",
+                "schools_province",
+                "totalmale",
+                "totalfemale",
+                "totalstd",
+            ]
+        )
 
-    df = pandas.read_json("dashapp/graduated.json")
+    df[["pp3year", "totalmale", "totalfemale", "totalstd"]] = df[
+        ["pp3year", "totalmale", "totalfemale", "totalstd"]
+    ].apply(pandas.to_numeric)
     return df
 
 
