@@ -39,21 +39,96 @@ layout = html.Div(
                         [
                             html.H4(
                                 "เกี่ยวกับผู้จัดทำ",
-                                style={"color": "white", "marginLeft": "20px"},
+                                style={"color": "white", "marginLeft": "18px"},
                             )
                         ]
                     ),
                     dbc.Container(
                         [
                             dbc.Container(
-                                [html.H1("HELLO WORLD!", style={"color": "white"})]
+                                dbc.Row(
+                                    [
+                                        dbc.Row(
+                                            html.Div(
+                                                "จตุรวิชญ์ ค่อฉุ้น",
+                                                style={
+                                                    "color": "white",
+                                                    "fontSize": "18px",
+                                                    "text-align": "center",
+                                                },
+                                            ),
+                                        ),
+                                        dbc.Row(
+                                            html.Div(
+                                                "นักศึกษาปริญญาตรี วิศวกรรมศาสตร์ปัญญาประดิษฐ์",
+                                                style={
+                                                    "color": "white",
+                                                    "fontSize": "18px",
+                                                    "text-align": "center",
+                                                },
+                                            ),
+                                        ),
+                                        dbc.Row(
+                                            html.Div(
+                                                "มหาวิทยาลัยสงขลานครินทร์ วิทยาเขตหาดใหญ่",
+                                                style={
+                                                    "color": "white",
+                                                    "fontSize": "18px",
+                                                    "text-align": "center",
+                                                },
+                                            ),
+                                        ),
+                                    ],
+                                    className="mb-4",
+                                ),
+                            ),
+                            html.Br(),
+                            dbc.Container(
+                                dbc.Row(
+                                    [
+                                        dbc.Row(
+                                            html.A(
+                                                "GITHUB - TxChar",
+                                                href="https://github.com/TxChar",
+                                                style={
+                                                    "color": "white",
+                                                    "fontSize": "18px",
+                                                },
+                                                target="_blank",
+                                            ),
+                                        ),
+                                        dbc.Row(
+                                            html.A(
+                                                "GITLAB - TxCharnom",
+                                                href="https://gitlab.com/TxCharnom",
+                                                style={
+                                                    "color": "white",
+                                                    "fontSize": "18px",
+                                                },
+                                                target="_blank",
+                                            ),
+                                        ),
+                                        dbc.Row(
+                                            html.A(
+                                                "LINKED-IN - Jaturawich Khochun",
+                                                href="https://www.linkedin.com/in/jaturawich-khochun-923662317/",
+                                                style={
+                                                    "color": "white",
+                                                    "fontSize": "18px",
+                                                },
+                                                target="_blank",
+                                            ),
+                                        ),
+                                    ],
+                                    className="mb-4",
+                                ),
                             ),
                             html.Br(),
                         ],
                         style={"marginTop": 20, "Align": "center"},
                     ),
                 ],
-                style={"backgroundColor": "#024070", "border-radius": "20px"},
+                style={"backgroundColor": "#024070", "border-radius": "18px"},
             ),
         ),
     ]
